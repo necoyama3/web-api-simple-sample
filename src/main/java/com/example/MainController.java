@@ -13,8 +13,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/")
 public class MainController {
+
+	@GetMapping(value = "/")
+	public ResponseEntity<String> base(@RequestHeader Map<String, String> headers) {
+		return listAllHeaders(headers);
+	}
 
 	@GetMapping(value = "/allHeaders")
 	public ResponseEntity<String> listAllHeaders(@RequestHeader Map<String, String> headers) {
